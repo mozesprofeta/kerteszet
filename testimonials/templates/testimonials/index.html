@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Testimonials</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<style type="text/css">
+    .width {
+        width: 90%;
+    }
+    body {
+        display: flex; 
+        flex-direction: column;
+    }
+    .navbar {
+        border-radius: 0;
+        margin: 0;
+    }
+    .navbar .container-fluid {
+        padding: 0;
+    }
+    .jumbotron .container {
+        padding: 0;
+    }
+    .heading {
+        border-bottom: 1px solid black; 
+        align-self: flex-end; 
+        padding: 0 0 5px 0;
+    }
+    h2, h4 {
+        margin: 0;
+    }
+    main .row {
+        display: flex;
+    }
+    .content {
+        padding: 5px 0 5px 0;
+    }
+    footer {
+        padding: 0;
+        margin: 0;
+    }
+    footer.container {
+        display: flex;
+    }
+    span a {
+        padding-right: 5px;
+    }
+    footer {
+        background-color: grey;
+    }
+    .foot {
+        padding: 0; 
+    }
+    .col-md-6.foot {
+        padding-bottom: 10px;
+    }
+    .col-md-12.foot {
+        text-align: right;
+        border-bottom: 1px solid black;
+    }
+    #address {
+        padding: 0;
+        margin: 10px 0 0 0;
+    }
+    #company {
+        font-size: 12px;
+    }
+    #copyright {
+        text-align: right;
+    }
+
+</style>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid width">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Company</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">B</a></li>
+                        <li><a href="#">C</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron">
+            <div class="container width">
+                <h1>Example</h1>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="container width">
+            <div class="row">
+                <div class="col-md-7 heading">
+                    <h2>Customer testimonials</h2>
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4 heading">
+                    <h4>Why choose us?</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7 content">
+                    <p>This is a fictional pharagraph.</p>
+                    <p>This is some filling text.</p>
+                    <form action="" method="post" role="form">
+                        <div class="form-group">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.comment.label_tag }}
+                            {{ form.comment }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.captcha }}
+                        </div>
+                        <button type="submit" class="btn btn-info" value="Submit" >Submit</button>
+                    </form>
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4 content">
+                    <li>Professional and passionate service</li>
+                    <li>Specialists in be-spoke garden design</li>
+                    <li>No job is too big or too small</li>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container width">
+            <div class="row">
+                <div class="col-md-12 foot">
+                    <p id="address">Precision Gardening, Address 1, Address 2, Town, County, Post code, United Kingdom</p>
+                    <p id="company"><i>Company No. XXXXXXXXXXXXX, VAT No. XXXXXXXXXXXXX</i></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 foot">
+                    <span><a href="">Home</a></span>
+                    <span><a href="">About us</a></span>
+                    <span><a href="">Services</a></span>
+                    <span><a href="">Testimonials</a></span>
+                    <span><a href="">Contact</a></span>
+                </div>
+                <div class="col-md-6 foot" id="copyright">
+                    <span>All content copyright 2015 | Built by mozes</span>
+                </div>
+            </div>
+        </div> 
+    </footer>  
+</body>
+</html>
+

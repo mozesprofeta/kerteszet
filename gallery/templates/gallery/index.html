@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gallery</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+    body {
+        padding-top: 65px;
+    }
+    .before-after {
+        background-color: grey;
+        display: table;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .table-row { 
+        display: table-row;
+    }
+    .table-cell {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .page {
+        margin: 0 auto; 
+        width: 80%;
+        text-align: center;
+    }
+
+    .diy-slideshow {
+        position: relative;
+        display: block;
+        overflow: hidden;
+    }
+    figure {
+        position: absolute;
+        opacity: 0;
+        transition: 1s opacity;
+    }
+    figcaption {
+        position: absolute;
+        font-family: sans-serif;
+        font-size: .8em;
+        bottom: .75em;
+        right: .35em;
+        padding: .25em;
+        color: #fff;
+        background: rgba(0,0,0, .25);
+        border-radius: 2px;
+    }
+    figcaption a {
+        color: #fff;
+    }
+    figure.show {
+        opacity: 1;
+        position: static;
+        transition: 1s opacity;
+    }
+    .next, .prev {
+        color: #fff;
+        position: absolute;
+        background: rgba(0,0,0, .6);
+        top: 50%;
+        z-index: 1;
+        font-size: 2em;
+        margin-top: -.75em;
+        opacity: .3;
+        user-select: none;
+    }
+    .next:hover, .prev:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+    .next {
+        right: 0;
+        padding: 10px, 5px, 15px, 10px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    .prev {
+        left: 0;
+        padding: 10px, 10px, 15px, 5px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+</style>
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Company</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">A</a></li>
+                    <li><a href="#">B</a></li>
+                    <li><a href="#">C</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="before-after">   
+        {% for before in images %} 
+            {% for after in before.after_set.all %}
+                <div class="table-row">
+                    <div class="table-cell">
+                        <a href="{{ before.image.url }}"><img src="{{ before.thumbnail.url }}"></a>
+                        <p>Before</p> 
+                    </div>
+                    <div class="table-cell">
+                        <a href="{{ after.image.url }}"><img src="{{ after.thumbnail.url }}"></a>
+                        <p>After</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="page">
+        <span class="step-links">
+            {% if images.has_previous %}
+                <a href="?page={{ images.previous_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ images.number }} of {{ images.paginator.num_pages }}.
+            </span>
+
+            {% if images.has_next %}
+                <a href="?page={{ images.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+
+    <div class="diy-slideshow" style="background-color: tomato;">
+        {% for before in images %}
+        {% for after in images %}
+        <figure class="show">
+            <img src="{{ before.image.url }}" width="100%">
+            <figcaption>vuttyukutyuuuu</figcaption>
+        </figure>
+        <figure>
+            <img src="{{ after.image.url }}" width="100%">
+            <figcaption></figcaption>
+        </figure>
+        <span class="prev">nyílbalra</span>
+        <span class="next">nyíljobbra</span>
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    <div class="footer">
+        <div class="table">
+            <div class="table-cell">
+                
+            </div>
+            <div  class="table-cell">
+                
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    
+                </div>
+                <div class="table-cell">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    (function(document){
+
+        var counter = 0;
+        var items = document.querySelectorAll(".diy-slideshow");
+        var num_items = items.length;   
+
+        var show_current = function(){
+            var item_to_show = Math.abs(counter%num_items);
+
+            [].forEach.call(items, function(el){
+                el.classList.remove('show');
+            });
+
+        items[item_to_show].classList.ad('show');
+        }
+
+        document.querySelector('.next').addEventListener('click',
+            function() {
+                    counter++;
+                    show_current();
+                },
+            false
+            );
+
+        document.querySelector('.prev').addEventListener('click',
+            function() {
+                    counter--;
+                    show_current();
+                },
+            false
+            );
+    })();
+</script>
+</html>
+
+
+<!-- <span class="step-links">
+            {% if images.has_previous %}
+                <a href="?page={{ images.previous_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ images.number }} of {{ images.paginator.num_pages }}.
+            </span>
+
+            {% if images.has_next %}
+                <a href="?page={{ images.next_page_number }}">next</a>
+            {% endif %}
+        </span> -->
+
+<!-- <div class="container-fluid">
+         <ul>
+             {% for album in albums %}
+             <div>
+                 {{ album.name }}{{ album.afterphoto_set.count }}
+             </div>
+             <ul>
+                 {% for photo in album.beforephoto_set.all %}
+                 <img src="{{ photo.image.url }}">
+                 {% endfor %}
+             </ul>
+             {% endfor %}
+         </ul>
+    </div> -->

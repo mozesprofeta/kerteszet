@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, inital-scale=1">
+	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<style type="text/css">
+	.navbar-default {
+        padding: 0;
+        margin: 0;
+        border: 0;  
+    }
+    .navbar-default .container-fluid {
+        width: 80%;
+    }
+    .container {
+        width: 80%;
+    }
+    .jumbotron {
+            
+    }
+    .form-group {
+        width: 400px;
+    }
+    .table {
+        width: 80%;
+        margin: 0 auto;
+        display: table;
+        padding: 20px;
+    }
+    .table-row {
+        display: table-row;
+    }
+    .table-cell {
+        display: table-cell;
+        /*background-color: Tomato;*/
+    }
+    #kozep {
+        background-color: white;
+        width: 100px;
+    }
+    #cim1, #cim2 {
+        vertical-align: bottom;
+        border-bottom: 1px solid black;
+    }
+    .footer {
+        padding-top: 10px;
+        background-color: grey;
+    }
+    #footer-head {
+        width: 80%;
+        text-align: right;
+        border-bottom: 1px solid black;
+    }
+    #bal {
+        float: left;
+    }
+    #jobb {
+        float: right;
+    }
+    #error {
+        vertical-align: middle;
+        color: red;
+    }
+    #submit {
+        padding-top: 10px;
+    }
+</style>
+<body>
+
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">Company</a>
+			</div>	
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">A</a></li>
+					<li><a href="#">B</a></li>
+					<li><a href="{% url 'testimonials:index' %}">Testimonials</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Example</h1>
+		</div>
+	</div>
+
+   
+    <div class="table">
+        <form action="" method="post" role="form">
+        {% csrf_token %}
+            <div class="table-row">
+                <div class="table-cell">
+                    <h2>Contact Us</h2>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <p>This is a paragraph.</p>
+                    <p>This is another paragraph.</p>
+                </div>
+            </div>  
+            <div class="table-row">
+                <div class=" table-cell">
+                    <div class="form-group">
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                    </div>
+                </div>
+                <div class="table-cell" id="error">
+                    {{ form.name.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="form-group">
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="table-cell" id="error">
+                    {{ form.email.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="form-group">
+                        {{ form.telephone.label_tag }}
+                        {{ form.telephone }}
+                    </div>
+                </div>
+                <div class="table-cell" id="error">
+                    {{ form.telephone.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="form-group">
+                        {{ form.text.label_tag }}
+                        {{ form.text }}
+                    </div>
+                </div>
+                <div class="table-cell" id="error">
+                    {{ form.text.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="g-recaptcha" data-sitekey="6LdJdRATAAAAAN3197ICijFMnw2IyjT2ce3lqzNG"></div>
+                </div>
+                <div class="table-cell" id="error">
+                    {{ form.captcha.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" id="submit">
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </div>
+                <div class="table-cell">
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+
+	<div class="footer">
+        <div class="table">
+    		<div class="table-cell" id="footer-head">
+    			<p>Precision Gardening, Address 1, Address 2, Town, County, Post code, United Kingdom<br>
+                Company No. XXXXXXXXXXXXX, VAT No. XXXXXXXXXXXXX
+                </p>
+    		</div>
+    		<div class="table-row">
+    			<div class="table-cell" id="bal">
+    				<p>
+                        <a href="#">Home</a>
+                        <a href="#">About Us</a>
+                        <a href="#">Services</a>
+                        <a href="#">Testimonials</a>
+                        <a href="#">Contact</a>
+                    </p>
+    			</div>
+    			<div class="table-cell" id="jobb">
+    				<p>All content copyright 2015  |  Powered by mozes</p>
+    			</div>
+    		</div>
+        </div>    
+   </div>  
+</body>
+</html>
+
+<!-- <form action="" method="post" role="form">
+        {% csrf_token %}
+        <div class="table">
+            <div class="table-row">
+                <div class="table-cell" style="background-color: blue;">
+                    <h2>Contact Us</h2>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell" style="background-color: yellow;">
+                    <p>This is a paragraph.</p>
+                    <p>This is another paragraph.</p>
+                </div>
+            </div>  
+            <div class="table-row">
+                <div class=" table-cell" style="background-color: tomato;">
+                    <div class="form-group">
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                    </div>
+                </div>
+                <div class="table-cell" style="background-color: grey;" id="error">
+                    {{ form.name.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="form-group">
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="table-cell" id="error">
+                    {{ form.email.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="form-group">
+                        {{ form.telephone.label_tag }}
+                        {{ form.telephone }}
+                    </div>
+                </div>
+                <div class="table-cell" id="error">
+                    {{ form.telephone.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="form-group">
+                        {{ form.text.label_tag }}
+                        {{ form.text }}
+                    </div>
+                </div>
+                <div class="table-cell" id="error">
+                    {{ form.text.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <div class="g-recaptcha" data-sitekey="6LdJdRATAAAAAN3197ICijFMnw2IyjT2ce3lqzNG"></div>
+                </div>
+                <div class="table-cell" id="error">
+                    {{ form.captcha.errors }}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </div>
+                <div class="table-cell">
+                    
+                </div>
+            </div>
+        </div>
+    </form> -->
